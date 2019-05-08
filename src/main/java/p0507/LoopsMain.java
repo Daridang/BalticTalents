@@ -13,8 +13,7 @@ public class LoopsMain {
         int[] a = {5, 6, 10, 15, 8, 4};
         int[] b = {8, 5, 3};
 
-        double dA = average(a);
-        double dB = average(b);
+        double dA = average(a), dB = average(b);
 
         if (dA > dB) {
             System.out.println(dA - dB);
