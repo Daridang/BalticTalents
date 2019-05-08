@@ -1,17 +1,20 @@
+package p0506;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Main {
-    public static void main(String[] args) {
-        int[] range = IntStream.rangeClosed(1, 100).toArray();
 
-        int[] bonus = IntStream.rangeClosed(101, 200).toArray();
+    public static void main(String[] args) {
+        int[] range = IntStream.rangeClosed(1, 10).toArray();
+
+        int[] bonus = IntStream.rangeClosed(11, 25).toArray();
 
         System.out.println(sumFirstFive(range));
 
         System.out.println(sumLastThree(range));
-//
-//        System.out.println(Arrays.toString(mergeArrays(range, bonus)));
+
+        System.out.println(Arrays.toString(mergeArrays(range, bonus)));
 
         printArrays(range, bonus, mergeArrays(range, bonus));
 
@@ -57,11 +60,17 @@ public class Main {
     private static int sumFirstFive(int[] arr) {
         System.out.println("\nSum first five odd numbers: ");
         int sum = 0;
-        int[] temp = Arrays.copyOfRange(arr, 0, 10);
-        for (int i = 0; i < temp.length; i++) {
+        int counter = 0;
+        //int[] temp = Arrays.copyOfRange(arr, 0, 10);
+        for (int i = 0; i < arr.length; i++) {
             if (arr[i] % 2 != 0) {
                 sum += arr[i];
+                counter++;
                 System.out.println(arr[i] + " sum: " + sum);
+            }
+
+            if (counter == 5) {
+                break;
             }
         }
         return sum;
