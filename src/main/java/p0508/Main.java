@@ -1,7 +1,7 @@
 package p0508;
 
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
+import com.google.gson.reflect.TypeToken;
 import p0507.Owner;
 
 import java.io.FileReader;
@@ -31,35 +31,10 @@ public class Main {
     }
 
     private static List<Owner> getListOfOwners() throws IOException {
-        List<Owner> list = null;
-
-        // Create json parser
-        JsonParser parser = new JsonParser();
-
-        // And parse json file with data
-        JsonElement root = parser.parse(new JsonReader(new FileReader("MOCK_DATA.json")));
-
-        if (root.isJsonArray()) {
-
-            // If json element is array create ArrayList to save objects in list
-            list = new ArrayList<>();
-            JsonArray array = root.getAsJsonArray();
-            int size = array.size();
-
-            // In cycle for get data from json and create POJO objects,
-            for (int i = 0; i < size; i++) {
-                JsonElement element = array.get(i);
-                JsonObject object = element.getAsJsonObject();
-                Owner owner = new Owner(
-                        object.get("first_name").getAsString(),
-                        object.get("last_name").getAsString()
-                );
-
-                // then add to list
-                list.add(owner);
-            }
-        }
-        return list;
+        return new Gson().fromJson(
+                new FileReader("MOCK_DATA.json"),
+                new TypeToken<List<Owner>>(){}.getType()
+        );
     }
 
     private static boolean isTriangleValid(double a, double b, double c) {
