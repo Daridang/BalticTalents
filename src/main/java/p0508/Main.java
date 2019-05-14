@@ -30,7 +30,7 @@ public class Main {
         System.out.println(isTriangleValid(2, 5, 7));
     }
 
-    private static List<Owner> getListOfOwners() throws IOException {
+    public static List<Owner> getListOfOwners() throws IOException {
         return new Gson().fromJson(
                 new FileReader("MOCK_DATA.json"),
                 new TypeToken<List<Owner>>(){}.getType()

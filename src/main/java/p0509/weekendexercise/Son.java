@@ -7,11 +7,7 @@ public class Son extends FamilyMember implements Driver {
 
     @Override
     public boolean canDriveCar() {
-        if (getAge() >= 18) {
-            return true;
-        } else {
-            return false;
-        }
+        return getAge() >= 18;
     }
 
     @Override
