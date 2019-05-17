@@ -2,10 +2,10 @@ package p0514;
 
 public class Exercise3 {
     public static void main(String[] args) {
-        print(10, 100);
+        print(3, 10);
     }
 
-    private static void print(int quantity, double pricePVM) {
+    public static void print(int quantity, double pricePVM) {
         double p = 1.21;
         double price1pcs = pricePVM / p;
         double priceAll = (pricePVM / p) * quantity;

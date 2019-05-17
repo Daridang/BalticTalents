@@ -2,17 +2,22 @@ package p0514.exercise1;
 
 
 import org.threeten.extra.YearQuarter;
+import p0514.exercise2.Client;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<Invoice> invoices = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             invoices.add(new Invoice(
                             Utils.getRandomDate(Utils.getRandomLong()),
-                            "Client " + i,
+                            new Client(
+                                    p0508.Main.getListOfOwners().get(i),
+                                    "LT77" + Utils.getRandomLong()
+                            ),
                             Utils.getRandomBigDecimal()
                     )
             );
@@ -40,7 +45,7 @@ public class Main {
     private static void printReport(YearQuarter quarter, List<Invoice> invoices) {
 
         BigDecimal sum = invoices.stream()
-                .map(Invoice::getSum)
+                .map(Invoice::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         System.out.println("Quarter " + quarter + ":");
