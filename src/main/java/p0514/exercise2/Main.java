@@ -52,6 +52,12 @@ public class Main {
         BigDecimal p = new BigDecimal(1.21);
         BigDecimal quantity = new BigDecimal(q);
 
+//        Formulės:
+//      [suma su PVM] = 100% + 21%
+//      [suma be PVM = [suma su PVM] / 121 * 100
+//      [prekes vieneto kaina be PVM] = [suma be PVM] / [kiekis]
+//      [PVM suma] = [suma su PVM] - [suma be PVM]
+
         BigDecimal priceWithoutPVM = pricePVM.divide(p, BigDecimal.ROUND_HALF_UP);
         BigDecimal priceAll = pricePVM.divide(p, BigDecimal.ROUND_HALF_UP).multiply(quantity);
         BigDecimal sumPVM = pricePVM.subtract(priceWithoutPVM).multiply(quantity);
